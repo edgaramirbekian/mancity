@@ -1,14 +1,15 @@
 import React from 'react';
-//styles
 
 //app modules
+import Header from '../Components/Header_Footer/Header';
+import Footer from '../Components/Header_Footer/Footer';
 
-//3rd party libs
-
-const Layout = () => {
+const Layout = (props) => {
     return (
         <div>
-            abbe
+            <Header/>
+            {props.children}
+            <Footer/>
         </div>
     );
 };
