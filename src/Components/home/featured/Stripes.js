@@ -5,151 +5,153 @@ import React, { useState } from 'react';
 import { easePolyOut } from 'd3-ease';
 import Animate from 'react-move/Animate';
 
-// const Stripes = () => {
-//
-//     const [stripes] = useState([
-//         {
-//             background: '#98c5e9',
-//             left: 120,
-//             rotate: 25,
-//             top: -260,
-//             delay: 0,
-//         },
-//         {
-//             background: '#ffffff',
-//             left: 360,
-//             rotate: 25,
-//             top: -397,
-//             delay: 200,
-//         },
-//         {
-//             background: '#98c5e9',
-//             left: 600,
-//             rotate: 25,
-//             top: -498,
-//             delay: 400,
-//         }
-//     ]);
-//
-//     const showStripes = () => (
-//         stripes.map((stripe, idx) => (
-//             <Animate
-//                 key={idx}
-//                 show={true}
-//                 start={{
-//                     background: '#ffffff',
-//                     opacity: 0,
-//                     left: 0,
-//                     top: 0,
-//                     rotate: 0
-//                 }}
-//                 enter={{
-//                     background: [stripe.background],
-//                     opacity: 1,
-//                     left: [stripe.left],
-//                     top: [stripe.top],
-//                     rotate: [stripe.rotate],
-//                     timing: {delay: stripe.delay, duration: 200, ease: easePolyOut}
-//                 }}
-//             >
-//                 {({background, opacity, left, top, rotate}) => (
-//                     <div
-//                         className="stripe"
-//                         style={{
-//                             background,
-//                             opacity,
-//                             transform: `rotate(${rotate}) translate(${left}, ${top})`
-//                         }}
-//                     >
-//                     </div>
-//                 )}
-//             </Animate>
-//         ))
-//     );
-//
-//     return (
-//         <div className="featured_stripes">
-//             {showStripes()}
-//         </div>
-//     );
-// };
-//
-// export default Stripes;
+const Stripes = () => {
 
-class Stripes extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            stripes: [
-                {
-                    background: '#98c5e9',
-                    left: 120,
-                    rotate: 25,
-                    top: -260,
-                    delay: 0,
-                },
-                {
-                    background: '#ffffff',
-                    left: 360,
-                    rotate: 25,
-                    top: -397,
-                    delay: 200,
-                },
-                {
-                    background: '#98c5e9',
-                    left: 600,
-                    rotate: 25,
-                    top: -498,
-                    delay: 400,
-                }]
+    const [stripes] = useState([
+        {
+            background: '#98c5e9',
+            left: 120,
+            rotate: 25,
+            top: -260,
+            delay: 0,
+        },
+        {
+            background: '#ffffff',
+            left: 360,
+            rotate: 25,
+            top: -397,
+            delay: 200,
+        },
+        {
+            background: '#98c5e9',
+            left: 600,
+            rotate: 25,
+            top: -498,
+            delay: 400,
         }
-    }
+    ]);
 
-    showStripes = () => {
-         this.state.stripes.map((stripe, idx) => {
-            return (
-                <Animate
-                    key={idx}
-                    show={true}
-                    start={{
-                        background: '#ffffff',
-                        opacity: 0,
-                        left: 0,
-                        top: 0,
-                        rotate: 0
-                    }}
-                    enter={{
-                        background: [stripe.background],
-                        opacity: 1,
-                        left: [stripe.left],
-                        top: [stripe.top],
-                        rotate: [stripe.rotate],
-                        timing: {delay: stripe.delay, duration: 200, ease: easePolyOut}
-                    }}
-                >
-                    {({background, opacity, left, top, rotate}) => {return (
-                        <div
-                            className="stripe"
-                            style={{
-                                background,
-                                opacity,
-                                transform: `rotate(${rotate}) translate(${left}, ${top})`
-                            }}
-                        >
-                        </div>
-                    )}}
-                </Animate>
-            )
-        })
-    };
+    const showStripes = () => (
+        stripes.map((stripe, idx) => (
+            <Animate
+                key={idx}
+                show={true}
+                start={{
+                    background: '#ffffff',
+                    opacity: 0,
+                    left: 0,
+                    top: 0,
+                    rotate: 0
+                }}
+                enter={{
+                    background: stripe.background,
+                    opacity: [1],
+                    left: [stripe.left],
+                    top: [stripe.top],
+                    rotate: [stripe.rotate],
+                    timing: {delay: stripe.delay, duration: 200, ease: easePolyOut}
+                }}
+            >
+                {({background, opacity, left, top, rotate}) => (
+                    <div
+                        className="stripe"
+                        style={{
+                            background,
+                            opacity,
+                            transform: `rotate(${rotate}deg) translate(${left}px, ${top}px)`
+                        }}
+                    >
+                    </div>
+                )}
+            </Animate>
+        ))
+    );
 
-    render() {
-        return (
-            <div className="featured_stripes">
-                {this.showStripes()}
-            </div>
-        );
-    }
-}
+    return (
+        <div className="featured_stripes">
+            {showStripes()}
+        </div>
+    );
+};
 
 export default Stripes;
+
+// class Stripes extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             stripes: [
+//                 {
+//                     background: '#98c5e9',
+//                     left: 120,
+//                     rotate: 25,
+//                     top: -260,
+//                     delay: 0
+//                 },
+//                 {
+//                     background: '#ffffff',
+//                     left: 360,
+//                     rotate: 25,
+//                     top: -397,
+//                     delay: 200
+//                 },
+//                 {
+//                     background: '#98c5e9',
+//                     left: 600,
+//                     rotate: 25,
+//                     top: -498,
+//                     delay: 400
+//                 }]
+//         };
+//         this.showStripes = this.showStripes.bind(this);
+//     }
+//
+//     showStripes() {
+//          this.state.stripes.map((stripe, idx) => {
+//             return (
+//                 <Animate
+//                     key={idx}
+//                     show={true}
+//                     start={{
+//                         background: '#ffffff',
+//                         opacity: 0,
+//                         left: 0,
+//                         top: 0,
+//                         rotate: 0
+//                     }}
+//                     enter={{
+//                         background: [stripe.background],
+//                         opacity: 1,
+//                         left: [stripe.left],
+//                         top: [stripe.top],
+//                         rotate: [stripe.rotate],
+//                         timing: {delay: stripe.delay, duration: 200, ease: easePolyOut}
+//                     }}
+//                 >
+//                     {({background, opacity, left, top, rotate}) => (
+//                         <div
+//                             className="stripe"
+//                             style={{
+//                                 background,
+//                                 opacity,
+//                                 transform: `rotate(${rotate}deg) translate(${left}px, ${top}px)`
+//                             }}
+//                         >
+//                         </div>
+//                     )}
+//                 </Animate>
+//             )
+//         })
+//     };
+//
+//
+//     render() {
+//         return (
+//             <div className="featured_stripes">
+//                 {this.showStripes()}
+//             </div>
+//         );
+//     }
+// }
+//
+// export default Stripes;
