@@ -1,19 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
+//styles
+
+//app modules
+import Routes from './routes';
+
+//3rd party libs
+import { BrowserRouter } from 'react-router-dom';
 
 const RenderApp = Component => ReactDOM.render(
-    <Component />,
+    <BrowserRouter>
+        <Component />
+    </BrowserRouter>,
     document.getElementById('root'));
 
-RenderApp(App);
+RenderApp(Routes);
 
 if (process.env.NODE_ENV === 'development') {
     if (module.hot) {
-        module.hot.accept('./App', () => {
+        module.hot.accept('./routes', () => {
             // console.log('Hot reload just happened');
-            const NextApp = require('./App').default;
+            const NextApp = require('./routes').default;
             RenderApp(NextApp);
         });
     }
