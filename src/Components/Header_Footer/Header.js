@@ -1,7 +1,7 @@
 import React from 'react';
 
 //app modules
-import { CityLogo } from '../utils/Icons';
+import { CityLogo } from '../utils/icons';
 
 //3rd party libs
 //material-ui

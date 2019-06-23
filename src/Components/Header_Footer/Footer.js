@@ -1,7 +1,7 @@
 import React from 'react';
 
 //app modules
-import { CityLogo } from "../utils/Icons";
+import { CityLogo } from "../utils/icons";
 
 const Footer = () => {
     return (
