@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//styles
-
 //app modules
 import Routes from './routes';
 
