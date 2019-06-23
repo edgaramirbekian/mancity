@@ -4,14 +4,19 @@ import React from 'react';
 import './Resources/css/app.css';
 
 //app modules
-import Layout from "./HOC/Layout";
+import Layout from './HOC/Layout';
+import Home from './Components/home';
 
 //3rd party libs
+//react-routes-dom
+import { Switch, Route } from 'react-router-dom';
 
-function Routes(props) {
+function Routes() {
   return (
     <Layout>
-      hello
+      <Switch>
+        <Route exact component={Home} path='/'/>
+      </Switch>
     </Layout>
   );
 }
