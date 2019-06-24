@@ -3,13 +3,13 @@ import 'firebase/app';
 import 'firebase/database';
 
 const config = {
-    apiKey: "AIzaSyAJRgcjWgCW-DAHk5R_fsEpN9BGiLjOt_8",
-    authDomain: "mancity4champ.firebaseapp.com",
-    databaseURL: "https://mancity4champ.firebaseio.com",
-    projectId: "mancity4champ",
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DB_URL,
+    projectId: process.env.PROJECT_ID,
     storageBucket: "",
-    messagingSenderId: "337385784508",
-    appId: "1:337385784508:web:b11063cd8c2944d0"
+    messagingSenderId: process.env.SENDER_ID,
+    appId: process.env.APP_ID
 };
 
 // Initialize Firebase

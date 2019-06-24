@@ -6,6 +6,9 @@ import Routes from './routes';
 
 //3rd party libs
 import { BrowserRouter } from 'react-router-dom';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const RenderApp = Component => ReactDOM.render(
     <BrowserRouter>
