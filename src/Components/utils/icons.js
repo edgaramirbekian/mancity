@@ -1,7 +1,6 @@
 import React from 'react';
 
 //3rd party libs
-//material-ui
 import { Link } from 'react-router-dom';
 
 //static files

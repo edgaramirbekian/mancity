@@ -1,7 +1,6 @@
 import React from 'react';
 
 //3rd party libs
-//react-router-dom
 import { Link } from 'react-router-dom';
 
 export const Tag = (props) => {

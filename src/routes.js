@@ -8,7 +8,6 @@ import Layout from './HOC/Layout';
 import Home from './Components/home';
 
 //3rd party libs
-//react-routes-dom
 import { Switch, Route } from 'react-router-dom';
 
 function Routes() {

@@ -1,7 +1,6 @@
 import React from 'react';
 
 //3rd party libs
-//react-move
 import { easePolyOut } from 'd3-ease';
 import Animate from 'react-move/Animate';
 

@@ -4,11 +4,9 @@ import React from 'react';
 import { CityLogo } from '../utils/icons';
 
 //3rd party libs
-//material-ui
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-//react-router
 import { Link } from 'react-router-dom';
 
 const Header = () => {
