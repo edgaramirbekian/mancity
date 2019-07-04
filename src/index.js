@@ -18,12 +18,12 @@ const RenderApp = Component => ReactDOM.render(
 
 RenderApp(Routes);
 
-if (process.env.NODE_ENV === 'development') {
-    if (module.hot) {
-        module.hot.accept('./routes', () => {
-            // console.log('Hot reload just happened');
-            const NextApp = require('./routes').default;
-            RenderApp(NextApp);
-        });
-    }
-}
+// if (process.env.NODE_ENV === 'development') {
+//     if (module.hot) {
+//         module.hot.accept('./routes', () => {
+//             // console.log('Hot reload just happened');
+//             const NextApp = require('./routes').default;
+//             RenderApp(NextApp);
+//         });
+//     }
+// }
