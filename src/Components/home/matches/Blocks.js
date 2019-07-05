@@ -5,6 +5,9 @@ import { firebaseMatches } from "../../../firebase";
 import { firebaseLooper, reverseArray } from '../../utils/miscs';
 import MatchesBlock from '../../utils/matches_block';
 
+//3rd party libs
+import Slide from 'react-reveal/Slide';
+
 const Blocks = () => {
 
     const [matches, setMatches] = useState([]);
@@ -16,23 +19,23 @@ const Blocks = () => {
         })
     }, []);
 
-    const showMatches = () => {
-        if (matches) {
-            matches.map((match,idx) => (
-                <div key={idx} className="item">
-                    <div className="wrapper">
-                        <MatchesBlock match={match} />
+    const showMatches = (some_matches) => (
+        some_matches ?
+            some_matches.map((match,idx) => (
+                <Slide bottom key={match.id}>
+                    <div key={idx} className="item">
+                        <div className="wrapper">
+                            <MatchesBlock match={match} />
+                        </div>
                     </div>
-                </div>
+                </Slide>
             ))
-        } else {
-
-        }
-    };
+            : null
+    );
 
     return (
         <div className="home_matches">
-            {showMatches()}
+            {showMatches(matches)}
         </div>
     );
 };
