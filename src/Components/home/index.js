@@ -1,14 +1,16 @@
 import React from 'react';
 
 //app modules
-import Featured from './featured/index';
-import Matches from './matches/index';
+import Featured from './featured';
+import Matches from './matches';
+import MeetPlayers from './meetPlayers';
 
 const Home = () => {
     return (
         <div className="bck_blue">
             <Featured />
             <Matches />
+            <MeetPlayers />
         </div>
     );
 };
