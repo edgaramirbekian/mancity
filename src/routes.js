@@ -11,7 +11,9 @@ import Dashboard from "./Components/admin/Dashboard";
 import PrivateRoute from "./Components/auth_routes/PrivateRoute";
 import PublicRoutes from "./Components/auth_routes/PublicRoutes";
 import AdminMatches from "./Components/admin/matches";
+import AdminPlayers from "./Components/admin/players";
 import EditMatch from "./Components/admin/matches/EditMatch";
+import EditPlayer from "./Components/admin/players/EditPlayer";
 
 //3rd party libs
 import { Switch } from 'react-router-dom';
@@ -24,6 +26,9 @@ function Routes(props) {
           <PrivateRoute exact component={AdminMatches} path='/admin_matches' {...props} />
           <PrivateRoute exact component={EditMatch} path='/admin_matches/edit/:id' {...props} />
           <PrivateRoute exact component={EditMatch} path='/admin_matches/edit' {...props} />
+          <PrivateRoute exact component={AdminPlayers} path='/admin_players' {...props} />
+          <PrivateRoute exact component={EditPlayer} path='/admin_players/edit/:id' {...props} />
+          <PrivateRoute exact component={EditPlayer} path='/admin_players/edit' {...props} />
           <PublicRoutes {...props} restricted={true} exact component={SignIn} path='/signin' />
           <PublicRoutes {...props} restricted={false} exact component={Home} path='/' />
       </Switch>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { firebaseMatches } from "../../../firebase";
+import { firebasePlayers } from "../../../firebase";
 
 //app modules
 import AdminLayout from '../../../HOC/AdminLayout';
@@ -15,17 +15,16 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const AdminMatches = (props) => {
-
+const AdminPlayers = (props) => {
     const [isLoading, setIsLoading] = useState(true);
-    const [matches, setMatches] = useState([]);
+    const [players, setPlayers] = useState([]);
 
     useEffect(() => {
-        firebaseMatches.once('value')
+        firebasePlayers.once('value')
             .then(snapshot => {
-                const matches = firebaseLooper(snapshot);
+                const players = firebaseLooper(snapshot);
                 setIsLoading(false);
-                setMatches(reverseArray(matches))
+                setPlayers(reverseArray(players))
             })
             .catch((error) => {return error})
     }, []);
@@ -37,34 +36,32 @@ const AdminMatches = (props) => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Date</TableCell>
-                                <TableCell>Match</TableCell>
-                                <TableCell>Result</TableCell>
-                                <TableCell>Status</TableCell>
+                                <TableCell>First Name</TableCell>
+                                <TableCell>Last Name</TableCell>
+                                <TableCell>Number</TableCell>
+                                <TableCell>Position</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {
-                                matches
-                                    ? (matches.map((match) => (
-                                        <TableRow key={match.id}>
+                                players
+                                    ? (players.map((player) => (
+                                        <TableRow key={player.id}>
                                             <TableCell>
-                                                {match.date}
-                                            </TableCell>
-                                            <TableCell>
-                                                <Link to={`/admin_matches/edit/${match.id}`}>
-                                                    {match.away} <strong>-</strong> {match.local}
+                                                <Link to={`/admin_players/edit/${player.id}`}>
+                                                    {player.name}
                                                 </Link>
                                             </TableCell>
                                             <TableCell>
-                                                {match.resultAway} <strong>-</strong> {match.resultLocal}
+                                                <Link to={`/admin_players/edit/${player.id}`}>
+                                                    {player.lastname}
+                                                </Link>
                                             </TableCell>
                                             <TableCell>
-                                                {
-                                                    match.final === 'Yes'
-                                                        ? <span className='matches_tag_red'>Finished</span>
-                                                        : <span className='matches_tag_green'>Not Played</span>
-                                                }
+                                                {player.number}
+                                            </TableCell>
+                                            <TableCell>
+                                                {player.position}
                                             </TableCell>
                                         </TableRow>
                                     )))
@@ -86,4 +83,4 @@ const AdminMatches = (props) => {
     );
 };
 
-export default AdminMatches;
+export default AdminPlayers;
