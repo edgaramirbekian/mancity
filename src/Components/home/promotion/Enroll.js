@@ -75,6 +75,7 @@ const Enroll = () => {
                    if (snapshot.val() === null) {
                        firebasePromotions.push(dataToSubmit);
                        setFormSuccess('Congratulations!');
+                       setTimeout(() => {setFormSuccess('')}, 2000)
                    } else {
                        setFormSuccess('Already on the DataBase');
                    }

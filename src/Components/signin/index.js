@@ -7,7 +7,6 @@ import { validate } from '../utils/miscs';
 
 const SignIn = (props) => {
     const  [formError, setFormError] = useState(false);
-    const  [formSuccess, setFormSuccess] = useState('');
     const  [formData, setFormData] = useState({
         email: {
             element: 'input',

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { firebase } from './firebase';
 //app modules
 import Routes from './routes';
 
@@ -10,20 +10,22 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const RenderApp = Component => ReactDOM.render(
+const RenderApp = (Component, props) => ReactDOM.render(
     <BrowserRouter>
-        <Component />
+        <Component user={props.user}/>
     </BrowserRouter>,
     document.getElementById('root'));
 
-RenderApp(Routes);
+firebase.auth().onAuthStateChanged((user) => {
+    RenderApp(Routes, {user});
+});
 
-// if (process.env.NODE_ENV === 'development') {
-//     if (module.hot) {
-//         module.hot.accept('./routes', () => {
-//             // console.log('Hot reload just happened');
-//             const NextApp = require('./routes').default;
-//             RenderApp(NextApp);
-//         });
-//     }
-// }
+if (process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+        module.hot.accept('./routes', () => {
+            // console.log('Hot reload just happened');
+            const NextApp = require('./routes').default;
+            RenderApp(NextApp);
+        });
+    }
+}

@@ -19,11 +19,43 @@ const FormField = (props) => {
             case('input'):
                 formTemplate = (
                     <div>
+                        {
+                            props.formData.showLabel
+                                ? <div className='label_inputs'>
+                                    {props.formData.config.label}
+                                </div>
+                                : null
+                        }
                         <input
                             {...props.formData.config}
                             value={props.formData.value}
                             onChange={(event) => props.change({event, id:props.id})}
                         />
+                        { showError() }
+                    </div>
+                );
+                break;
+            case ('select'):
+                formTemplate = (
+                    <div>
+                        {
+                            props.formData.showLabel
+                                ? <div className='label_inputs'>
+                                    {props.formData.config.label}
+                                </div>
+                                : null
+                        }
+                        <select
+                            value={props.formData.value}
+                            onChange={(event) => props.change({event, id:props.id})}
+                        >
+                            <option value="">Select One</option>
+                            {
+                                props.formData.config.options.map((team) => (
+                                    <option key={team.key} value={team.key}>{team.value}</option>
+                                ))
+                            }
+                        </select>
                         { showError() }
                     </div>
                 );
