@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
+import {firebaseDB, firebaseMatches, firebaseTeams} from "../../../firebase";
 
 //app modules
 import AdminLayout from "../../../HOC/AdminLayout";
 import FormField from "../../utils/form_fields";
 import { validate } from "../../utils/miscs";
-import {firebase, firebaseDB, firebaseMatches, firebaseTeams} from "../../../firebase";
 import { firebaseLooper } from "../../utils/miscs";
 
 const EditMatch = (props) => {
