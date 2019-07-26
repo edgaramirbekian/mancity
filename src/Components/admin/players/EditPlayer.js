@@ -32,12 +32,12 @@ const EditPlayer = (props) => {
             validationMessage: '',
             showLabel: true
         },
-        lastName: {
+        lastname: {
             element: 'input',
             value: '',
             config: {
                 label: 'Last Name',
-                name: 'lastName_input',
+                name: 'lastname_input',
                 type: 'text'
             },
             validation: {
@@ -109,7 +109,6 @@ const EditPlayer = (props) => {
 
     useEffect(() => {
         const playerId = props.match.params.id;
-        console.log('1')
         if (!playerId) {
             setFormType('Add')
         } else {
@@ -118,12 +117,12 @@ const EditPlayer = (props) => {
                     const playerData = snapshot.val();
                     firebase.storage().ref('players').child(playerData.image).getDownloadURL()
                         .then((url) => {
-                            console.log('2')
+                            console.log('2');
                             updateFields(playerData, playerId, 'Edit', url)
                         })
                         .catch((error) => {console.log(error)})
                 })
-                .catch(() => {})
+                .catch((error) => {console.log(error)})
         }
     }, [props.match.params.id]);
 
@@ -138,7 +137,6 @@ const EditPlayer = (props) => {
         }
 
         let validData = validate(newElement);
-
         newElement.valid = validData[0];
         newElement.validationMessage = validData[1];
 
@@ -160,7 +158,7 @@ const EditPlayer = (props) => {
 
         if (formIsValid) {
             if(formType === 'Edit') {
-                firebaseDB.ref(`player/${playerID}`).update(dataToSubmit)
+                firebaseDB.ref(`players/${playerID}`).update(dataToSubmit)
                     .then(() => {
                         setFormSuccess('Player Updated');
                         setTimeout(() => {setFormSuccess('')}, 2000)
@@ -168,8 +166,14 @@ const EditPlayer = (props) => {
                     .catch((error) => setFormError(true))
             } else {
                 firebasePlayers.push(dataToSubmit)
-                    .then(() => {this.props.history.push('/admin_players')})
-                    .catch((error) => {setFormError(true)})
+                    .then(() => {
+                        setFormSuccess('Player Updated');
+                        setTimeout(() => {
+                            setFormSuccess('');
+                            props.history.push('/admin_players')
+                            }, 2000)
+                    })
+                    .catch((error) => {setFormError(true); console.log(dataToSubmit)})
             }
         } else {
             setFormError(true)
@@ -213,8 +217,8 @@ const EditPlayer = (props) => {
                             change={(element) => updateForm(element)}
                         />
                         <FormField
-                            id='lastName'
-                            formData={formData.lastName}
+                            id='lastname'
+                            formData={formData.lastname}
                             change={(element) => updateForm(element)}
                         />
                         <FormField
