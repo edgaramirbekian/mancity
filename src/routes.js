@@ -16,6 +16,7 @@ import EditMatch from "./Components/admin/matches/EditMatch";
 import EditPlayer from "./Components/admin/players/EditPlayer";
 import Matches from "./Components/matches";
 import Team from "./Components/team";
+import NotFound from "./Components/utils/not_found";
 
 //3rd party libs
 import { Switch } from 'react-router-dom';
@@ -35,6 +36,7 @@ function Routes(props) {
           <PublicRoutes {...props} restricted={false} exact component={Home} path='/' />
           <PublicRoutes {...props} restricted={false} exact component={Matches} path='/matches' />
           <PublicRoutes {...props} restricted={false} exact component={Team} path='/team' />
+          <PublicRoutes {...props} restricted={false} component={NotFound} />
       </Switch>
     </Layout>
   );
