@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {firebase, firebaseDB, firebasePlayers, firebaseTeams} from "../../../firebase";
+import {firebase, firebaseDB, firebasePlayers} from "../../../firebase";
 
 //app modules
 import AdminLayout from "../../../HOC/AdminLayout";
 import FormField from "../../utils/form_fields";
 import { validate } from "../../utils/miscs";
-import { firebaseLooper } from "../../utils/miscs";
 import FileUploader from "../../utils/file_uploader";
 
 const EditPlayer = (props) => {
@@ -15,7 +14,7 @@ const EditPlayer = (props) => {
     const [formSuccess, setFormSuccess] = useState('');
     const [formType, setFormType] = useState('');
     const [defaultIMG, setDefaultIMG] = useState('');
-    const [players, setPlayers] = useState([]);
+    // const [players, setPlayers] = useState([]);
     const [formData, setFormData] = useState({
         name: {
             element: 'input',
