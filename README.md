@@ -1,4 +1,7 @@
-This is A Portfolio Project
+This is A Portfolio Project with 
+firebase NoSQL DataBase, Storage and hosting, 
+admin authentication and functionality, 
+file upload functionality & some react-libraries for animations
 
 ## Start on Local Host
 
